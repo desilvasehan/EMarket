@@ -34,7 +34,7 @@ public class UpdateItems extends AppCompatActivity{
     Item item;
     TransactionHistory transactionHistory;
     int n_child;
-    long maxval;//changed
+    int maxval;//changed
     int n_childrens;
 
     private Spinner spinner1;
@@ -64,12 +64,25 @@ public class UpdateItems extends AppCompatActivity{
 
         btn_add = findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                maxvalGen();
+                reff = FirebaseDatabase.getInstance().getReference().child("Items");
+                reff.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        maxval = (int)dataSnapshot.getChildrenCount();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
                 item.setItem_name(itemname.getText().toString().trim());
                 item.setItem_price(itemprice.getText().toString().trim());
                 item.setStock_qyt(stockqty.getText().toString().trim());
+                item.setCurrent_qyt(stockqty.getText().toString().trim());
                 item.setCurrent_qyt(stockqty.getText().toString().trim());
                 item.setSup_email(sup_email.getText().toString().trim());
                 item.setUsr_email(usermail);
@@ -100,7 +113,6 @@ public class UpdateItems extends AppCompatActivity{
 
 
                 }
-                System.out.println("Item Name2: " + ItemName[0]);
                 addItemsOnSpinner2(ItemName);
             }
             @Override
@@ -130,6 +142,7 @@ public class UpdateItems extends AppCompatActivity{
             }
         });
 
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -148,22 +161,6 @@ public class UpdateItems extends AppCompatActivity{
                 finish();
             }
 
-        });
-    }
-
-    public void maxvalGen(){
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    maxval = (dataSnapshot.getChildrenCount());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
         });
     }
 
@@ -188,23 +185,36 @@ public class UpdateItems extends AppCompatActivity{
     public void addListenerOnSpinnerItemSelection() {
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
     }
 
     public void updateCurrent(){
-        reff = FirebaseDatabase.getInstance().getReference().child("items");
+        reff = FirebaseDatabase.getInstance().getReference().child("Items");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 n_child = (int) dataSnapshot.getChildrenCount();
-                String itemname,Usermail,sold_qty;
+                String itemname,Usermail,sold_qty,sup_mail,item_price,stock;
                 int qtty;
                 for (int i = 1; i <= n_child; i++) {
                     itemname = dataSnapshot.child(String.valueOf(i)).child("item_name").getValue().toString();
+                    sup_mail = dataSnapshot.child(String.valueOf(i)).child("sup_email").getValue().toString();
+                    item_price = dataSnapshot.child(String.valueOf(i)).child("item_price").getValue().toString();
                     Usermail = dataSnapshot.child(String.valueOf(i)).child("usr_email").getValue().toString();
+                    stock = dataSnapshot.child(String.valueOf(i)).child("stock_qyt").getValue().toString();
                     qtty = Integer.parseInt(dataSnapshot.child(String.valueOf(i)).child("stock_qyt").getValue().toString());
                     sold_qty = String.valueOf(qtty -  Integer.parseInt(quantity.getText().toString().trim()));
+                    System.out.println("Test Pass");
                     if ((Usermail.equals(usermail))&&(itemname.equals(String.valueOf(spinner1.getSelectedItem())))) {
-                        updateDB(String.valueOf(i),sold_qty);
+                        Item newItem = new Item();
+                        newItem.setStock_qyt(stock);
+                        newItem.setCurrent_qyt(sold_qty);
+                        newItem.setUsr_email(Usermail);
+                        newItem.setItem_price(item_price);
+                        newItem.setSup_email(sup_mail);
+                        newItem.setItem_name(itemname);
+                        System.out.println("Reference Key : " + i);
+                        updateDB(String.valueOf(i),newItem);
                         System.out.println("Done!");
                         break;
                     } else {
@@ -222,8 +232,7 @@ public class UpdateItems extends AppCompatActivity{
         });
 
     }
-    public void updateDB(String key,String newqty){
-        reff.child("Items").child(key).removeValue();
-        //reff.child("items").child(key).child("stock_qyt").setValue(newqty);
+    public void updateDB(String key,Item newitem){
+        reff.child(key).setValue(newitem);
     }
 }
