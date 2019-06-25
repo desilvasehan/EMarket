@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //reff = FirebaseDatabase.getInstance().getReference().child("Member");
         //reff.push().setValue("sds");
-        Toast.makeText(MainActivity.this,"Firebase Connection Success!",Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this,"Firebase Connection Success!",Toast.LENGTH_LONG).show();
 
         //Toast.makeText(MainActivity.this,"Firebase Connection Success!",Toast.LENGTH_LONG).show();
 

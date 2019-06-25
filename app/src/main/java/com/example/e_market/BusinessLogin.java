@@ -21,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 public class BusinessLogin extends AppCompatActivity {
 
     DatabaseReference reff;
+    int n_child;
+    static String CustomerType;
 
       @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,23 +49,32 @@ public class BusinessLogin extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                Home nH =  new Home();
-               String mail_address =  nH.getPersonEmail();
-               reff = FirebaseDatabase.getInstance().getReference().child("Member").child("1");
+               final String mail_address =  nH.getPersonEmail();
+               reff = FirebaseDatabase.getInstance().getReference().child("Member");
 
                reff.addValueEventListener(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String accesscodedb =dataSnapshot.child("passcode").getValue().toString();
-                        String accesscodeusr = passcode.getText().toString().trim();
+                       n_child = (int)dataSnapshot.getChildrenCount();
 
-                        if(accesscodedb.equals(accesscodeusr)) {
-                            startActivity(new Intent(BusinessLogin.this, SellerHome.class));
-                            finish();
-                        }
-                        else{
-                            Toast.makeText(BusinessLogin.this,"Error!",Toast.LENGTH_LONG).show();
-                        }
-                   }
+                       for (int i=1;i<=n_child;i++){
+                           String accesscodedb = dataSnapshot.child(String.valueOf(i)).child("passcode").getValue().toString();
+                           String accessmail = dataSnapshot.child(String.valueOf(i)).child("email").getValue().toString();
+                           System.out.println("Email : "+ accessmail);
+                           System.out.println("AccessCode : " + accesscodedb);
+                           String accesscodeusr = passcode.getText().toString().trim();
+
+                           if(accesscodedb.equals(accesscodeusr)&&(accessmail.equals(mail_address))) {
+                               CustomerType = dataSnapshot.child(String.valueOf(i)).child("acc_type").getValue().toString();
+                               System.out.println("Customer Type : " + CustomerType);
+                               startActivity(new Intent(BusinessLogin.this, BusinessHome.class));
+                               finish();
+                           }
+                           else{
+                               Toast.makeText(BusinessLogin.this,"Invalid Credentials!",Toast.LENGTH_LONG).show();
+                           }
+                       }
+                   };
 
                    @Override
                    public void onCancelled(@NonNull DatabaseError databaseError) {

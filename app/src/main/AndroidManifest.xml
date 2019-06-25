@@ -18,7 +18,7 @@
         <activity android:name=".Business_Stats"></activity>
         <activity android:name=".UpdateItems" />
         <activity android:name=".Items" />
-        <activity android:name=".SellerHome" />
+        <activity android:name=".BusinessHome" />
         <activity android:name=".Register" />
         <activity android:name=".BusinessLogin" />
         <activity android:name=".Home" />

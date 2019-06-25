@@ -1,12 +1,12 @@
 package com.example.e_market;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -64,6 +64,8 @@ public class UpdateItems extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     public void maxvalGen(){
@@ -81,4 +83,12 @@ public class UpdateItems extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(UpdateItems.this, BusinessHome.class));
+        finish();
+    }
+
 }

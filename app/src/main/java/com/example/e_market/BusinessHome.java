@@ -6,20 +6,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class SellerHome extends AppCompatActivity {
+public class BusinessHome extends AppCompatActivity {
 
-    Button btn_items,btn_stats,btn_update;
+    Button btn_items,btn_stats,btn_update,btn_cusstats;
+    Register r;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_home);
 
+        btn_cusstats = findViewById(R.id.btn_customerstats);
+        r = new Register();
+/*        if (r.acc_type.equals("Supplier")){
+            btn_cusstats.setVisibility(View.VISIBLE);
+        }
+        else{
+            btn_cusstats.setVisibility(View.INVISIBLE);
+        }*/
         //switch to items intent
         btn_items = findViewById(R.id.btn_items);
         btn_items.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SellerHome.this, Items.class));
+                startActivity(new Intent(BusinessHome.this, Items.class));
                 finish();
             }
         });
@@ -29,7 +39,7 @@ public class SellerHome extends AppCompatActivity {
         btn_stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SellerHome.this, Business_Stats.class));
+                startActivity(new Intent(BusinessHome.this, Business_Stats.class));
                 finish();
             }
         });
@@ -39,7 +49,7 @@ public class SellerHome extends AppCompatActivity {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SellerHome.this, UpdateItems.class));
+                startActivity(new Intent(BusinessHome.this, UpdateItems.class));
                 finish();
             }
         });
@@ -54,7 +64,7 @@ public class SellerHome extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(SellerHome.this, BusinessLogin.class));
+        startActivity(new Intent(BusinessHome.this, BusinessLogin.class));
         finish();
     }
 

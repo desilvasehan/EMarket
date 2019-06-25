@@ -4,7 +4,7 @@ public class new_Member {
     private String email;
     private String passcode;
     private String phone;
-    //private String acc_type;
+    private String acc_type;
 
     public String getEmail() {
         return email;
@@ -30,11 +30,11 @@ public class new_Member {
         this.phone = phone;
     }
 
-    /*public String getAcc_type() {
+    public String getAcc_type() {
         return acc_type;
     }
 
     public void setAcc_type(String acc_type) {
         this.acc_type = acc_type;
-    }*/
+    }
 }
