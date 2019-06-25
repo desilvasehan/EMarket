@@ -5,15 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BusinessLogin">
+    tools:context=".BusinessLogin"
+    android:background="@drawable/background_1">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="25dp"
         android:text="Business Login"
+        android:background="#FFFFFF"
         android:id="@+id/lbl_wlol"/>
 
     <LinearLayout
@@ -26,17 +28,19 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="Your Email"
             android:textSize="20dp"
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp"
+            android:background="#FFFFFF"/>
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:paddingLeft="30dp"
             android:text="test@test.com"
             android:textSize="20dp"
-            android:id="@+id/email_tv"/>
+            android:id="@+id/email_tv"
+            android:background="#FFFFFF"/>
 
     </LinearLayout>
 
@@ -48,19 +52,21 @@
         android:id="@+id/third_layer">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="Access Code"
             android:textSize="20dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:background="#FFFFFF"/>
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:inputType="numberPassword"
             android:maxLength="6"
             android:hint="Type In Your Code"
             android:textSize="20dp"
-            android:id="@+id/access_code"/>
+            android:id="@+id/access_code"
+            android:background="#FFFFFF"/>
     </LinearLayout>
 
     <LinearLayout
@@ -72,7 +78,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:id="@+id/log_in"/>
+            android:id="@+id/log_in"
+            android:layout_marginTop="20dp"
+
+            android:background="#FFFFFF"/>
     </LinearLayout>
 
     <LinearLayout
@@ -82,15 +91,14 @@
         android:layout_centerInParent="true">
 
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/register"
             android:src="@drawable/plus"
             android:scaleType="centerInside"
             android:text="Sign Out"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
-            android:background="#FFFFFF"
             android:textColor="#000000"/>
     </LinearLayout>
 

@@ -5,7 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BusinessHome">
+    tools:context=".BusinessHome"
+    android:background="@drawable/background_1">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:textSize="40dp"
+    android:text="Seller Home"
+    android:background="#FFFFFF"
+    android:id="@+id/top_title"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,24 +26,30 @@
             android:layout_width="200dp"
             android:layout_height="70dp"
             android:text="Items"
-            android:id="@+id/btn_items"/>
+            android:id="@+id/btn_items"
+            android:background="#FFFFFF"
+/>
         <Button
             android:layout_width="200dp"
             android:layout_height="70dp"
             android:text="Statistics"
-            android:id="@+id/btn_statistics"/>
+            android:id="@+id/btn_statistics"
+            android:background="#FFFFFF"
+            android:layout_marginTop="10dp"/>
         <Button
             android:layout_width="200dp"
             android:layout_height="70dp"
             android:text="Update"
-            android:id="@+id/btn_update"/>
+            android:id="@+id/btn_update"
+            android:background="#FFFFFF"
+            android:layout_marginTop="10dp"/>
         <Button
             android:layout_width="200dp"
             android:layout_height="70dp"
             android:text="Customer Stats"
             android:visibility="invisible"
-            android:id="@+id/btn_customerstats"/>
-
+            android:id="@+id/btn_customerstats"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 </RelativeLayout>

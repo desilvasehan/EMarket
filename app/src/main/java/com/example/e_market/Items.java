@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class Items extends AppCompatActivity {
 
     static String[] ItemName,ItemPrice,ItemQty,Supplier;
-    ArrayList<String> myArrayList = new ArrayList<>();
     ListView list;
     DatabaseReference reff;
     int n_child;
@@ -61,13 +60,14 @@ public class Items extends AppCompatActivity {
                      Sup = dataSnapshot.child(String.valueOf(i)).child("sup_email").getValue().toString();
                      Usermail = dataSnapshot.child(String.valueOf(i)).child("usr_email").getValue().toString();
 
-                   /* System.out.println(Usermail);
+                     //output checking
+                    /*{ System.out.println(Usermail);
                     System.out.println(mail_address);
                     System.out.println(Usermail.equals(mail_address));
                     System.out.println(IN);
                     System.out.println(IP);
                     System.out.println(SQ);
-                    System.out.println(Sup);*/
+                    System.out.println(Sup);}*/
 
                     if (Usermail.equals(mail_address)){
                         ItemName[val] = IN;
@@ -103,8 +103,6 @@ public class Items extends AppCompatActivity {
             }
 
         });
-
-
         System.out.println("Item Name3: " + value  );
 
 

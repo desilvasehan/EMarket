@@ -67,11 +67,12 @@ public class BusinessLogin extends AppCompatActivity {
                            if(accesscodedb.equals(accesscodeusr)&&(accessmail.equals(mail_address))) {
                                CustomerType = dataSnapshot.child(String.valueOf(i)).child("acc_type").getValue().toString();
                                System.out.println("Customer Type : " + CustomerType);
+                               Toast.makeText(BusinessLogin.this,"Successfull Login!",Toast.LENGTH_LONG).show();
                                startActivity(new Intent(BusinessLogin.this, BusinessHome.class));
                                finish();
                            }
                            else{
-                               Toast.makeText(BusinessLogin.this,"Invalid Credentials!",Toast.LENGTH_LONG).show();
+
                            }
                        }
                    };

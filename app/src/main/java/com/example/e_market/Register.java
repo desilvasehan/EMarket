@@ -61,8 +61,6 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
                 member.setEmail(txt_email.getText().toString().trim());
                 member.setPhone(phone_number.getText().toString().trim());
                 member.setPasscode(passcode1.getText().toString().trim());
-
-
                 member.setAcc_type(check);
 
                 reff.child(String.valueOf(maxval+1)).setValue(member);
