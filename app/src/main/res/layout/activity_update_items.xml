@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateItems">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lay_1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:paddingTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="Item Name"/>
+
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:hint="Item Name"
+                android:paddingLeft="20dp"
+                android:layout_gravity="end"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lay_2"
+            android:layout_below="@id/lay_1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:paddingTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="Item Price(Rs.)"/>
+
+            <EditText
+                android:id="@+id/txt_price"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:hint="Item Price"
+                android:paddingLeft="20dp"
+                android:inputType="numberDecimal"
+                android:layout_gravity="end"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lay_3"
+            android:layout_below="@id/lay_2">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:paddingTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="Stock qty"/>
+
+            <EditText
+                android:id="@+id/txt_quantity"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:hint="Stock qty"
+                android:inputType="numberDecimal"
+                android:paddingLeft="20dp"
+                android:layout_gravity="end"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lay_4"
+            android:layout_below="@id/lay_3">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:paddingTop="10dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:text="Supplier ID"/>
+
+            <EditText
+                android:id="@+id/txt_supemail"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:hint="Supplier Email"
+                android:paddingLeft="20dp"
+                android:inputType="textEmailAddress"
+                android:layout_gravity="end"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lay_4"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Item"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
