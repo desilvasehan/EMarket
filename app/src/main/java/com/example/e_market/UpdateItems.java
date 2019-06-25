@@ -34,7 +34,7 @@ public class UpdateItems extends AppCompatActivity{
     Item item;
     TransactionHistory transactionHistory;
     int n_child;
-    int maxval;//changed
+    long maxval;//changed
     int n_childrens;
 
     private Spinner spinner1;
@@ -71,7 +71,7 @@ public class UpdateItems extends AppCompatActivity{
                 reff.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        maxval = (int)dataSnapshot.getChildrenCount();
+                        maxval = (long)(dataSnapshot.getChildrenCount());
                     }
 
                     @Override
@@ -97,9 +97,11 @@ public class UpdateItems extends AppCompatActivity{
         reff.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                reff = FirebaseDatabase.getInstance().getReference().child("Items");
                 n_child = (int) dataSnapshot.getChildrenCount();
                 int val = 0;
                 String IN,Usermail;
+                ItemName = new String[n_child+2];
                 for (int i = 1; i <= n_child; i++) {
                     IN = dataSnapshot.child(String.valueOf(i)).child("item_name").getValue().toString();
                     Usermail = dataSnapshot.child(String.valueOf(i)).child("usr_email").getValue().toString();
@@ -120,7 +122,7 @@ public class UpdateItems extends AppCompatActivity{
 
             }
         });
-        addListenerOnSpinnerItemSelection();
+        //addListenerOnSpinnerItemSelection();
 
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         quantity = findViewById(R.id.txt_update_quantity);
@@ -144,9 +146,9 @@ public class UpdateItems extends AppCompatActivity{
 
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
+                reff = FirebaseDatabase.getInstance().getReference().child("transactionHistory");
                 String ItemN = String.valueOf(spinner1.getSelectedItem());
                 System.out.println("Item Name: " +ItemN);
                 System.out.println("User Mail: " + usermail);
@@ -185,7 +187,6 @@ public class UpdateItems extends AppCompatActivity{
     public void addListenerOnSpinnerItemSelection() {
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-
     }
 
     public void updateCurrent(){
