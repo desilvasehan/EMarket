@@ -28,8 +28,11 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
     DatabaseReference reff;
     new_Member member;
     int maxval;//changed
+    int child_count;
     Home nH;
     String check = "Seller";
+    boolean okReg = false;
+
 
 
 
@@ -55,23 +58,56 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
 
         maxvalGen();
 
+        reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                child_count = (int)dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         reg_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 member.setEmail(txt_email.getText().toString().trim());
                 member.setPhone(phone_number.getText().toString().trim());
                 member.setPasscode(passcode1.getText().toString().trim());
                 member.setAcc_type(check);
 
-                reff.child(String.valueOf(maxval+1)).setValue(member);
+                reff.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(int j=1;j<child_count;j++) {
+                            String email = dataSnapshot.child(String.valueOf(j)).child("email").getValue().toString();
+                            if(email.equals(txt_email.getText().toString().trim())){
+                                okReg = false;
+                            }
+                            else{
+                                okReg = true;
+                            }
+                        }
+                    }
 
-                startActivity(new Intent(Register.this,BusinessLogin.class));
-                finish();
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                if (okReg){
+                    reff.child(String.valueOf(maxval+1)).setValue(member);
+                    startActivity(new Intent(Register.this,BusinessLogin.class));
+                    finish();
+                }
+                else {
+                    Toast.makeText(Register.this,"Email in Use!",Toast.LENGTH_LONG).show();
+                }
             }
         });
-
-
-
     }
 
     public  void  passmatch(){

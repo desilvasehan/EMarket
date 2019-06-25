@@ -6,6 +6,7 @@ public class Item {
     private String item_name;
     private String item_price;
     private String stock_qyt;
+    private String current_qyt;
 
     public String getUsr_email() {
         return usr_email;
@@ -45,5 +46,13 @@ public class Item {
 
     public void setStock_qyt(String stock_qyt) {
         this.stock_qyt = stock_qyt;
+    }
+
+    public String getCurrent_qyt() {
+        return current_qyt;
+    }
+
+    public void setCurrent_qyt(String current_qyt) {
+        this.current_qyt = current_qyt;
     }
 }

@@ -7,54 +7,63 @@
     android:layout_height="match_parent"
     tools:context=".Register"
     android:orientation="vertical"
-    android:layout_marginTop="50dp">
+    android:layout_marginTop="50dp"
+    android:background="@drawable/background_1">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/lay_1">
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
+        android:background="#FFFFFF"
         android:text="Email"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="TextView"
         android:paddingLeft="20dp"
+        android:background="#FFFFFF"
         android:layout_gravity="end"/>
     </LinearLayout>
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Supplier"
+        android:background="#FFFFFF"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/lay_1"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/switch1"
-        android:id="@+id/lay_2">
+        android:id="@+id/lay_2"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/textV_phone"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Phone Number"
-        android:paddingRight="20dp"/>
+        android:background="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editph"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:ems="10"
         android:inputType="number"
+        android:background="#FFFFFF"
         android:maxLength="10"/>
     </LinearLayout>
 
@@ -62,22 +71,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lay_2"
-        android:id="@+id/lay_3">
+        android:layout_marginTop="20dp"
+        android:id="@+id/lay_3"
+        android:background="#FFFFFF"
+        >
     <TextView
         android:id="@+id/textView3"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Passcode"
-        android:paddingRight="20dp"/>
+        android:paddingRight="20dp"
+        android:background="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:ems="10"
         android:maxLength="6"
         android:inputType="numberPassword"
         tools:layout_editor_absoluteX="157dp"
+        android:background="#FFFFFF"
         tools:layout_editor_absoluteY="251dp" />
     </LinearLayout>
 
@@ -85,20 +99,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lay_3"
-        android:id="@+id/lay_4">
+        android:layout_marginTop="20dp"
+        android:id="@+id/lay_4"
+        android:background="#FFFFFF">
         <TextView
             android:id="@+id/textView4"
             android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="Re Type Passcode"
+            android:background="#FFFFFF"
+            android:layout_height="30dp"
+            android:text="Re-Type Code"
             android:paddingRight="20dp"/>
 
         <EditText
             android:id="@+id/editText3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:ems="10"
             android:maxLength="6"
+            android:background="#FFFFFF"
             android:inputType="numberPassword"
             tools:layout_editor_absoluteX="157dp"
             tools:layout_editor_absoluteY="251dp" />
@@ -108,12 +126,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lay_4"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        >
 
         <Button
             android:id="@+id/reg_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:text="Register"/>
 />
     </LinearLayout>
