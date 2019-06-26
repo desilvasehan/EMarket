@@ -27,8 +27,7 @@
             android:layout_height="70dp"
             android:text="Items"
             android:id="@+id/btn_items"
-            android:background="#FFFFFF"
-/>
+            android:background="#FFFFFF"/>
         <Button
             android:layout_width="200dp"
             android:layout_height="70dp"
@@ -48,6 +47,7 @@
             android:layout_height="70dp"
             android:text="Customer Stats"
             android:visibility="invisible"
+            android:background="#FFFFFF"
             android:id="@+id/btn_customerstats"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
