@@ -98,4 +98,12 @@ public class Home extends AppCompatActivity {
                     }
                 });
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Home.this, MainActivity.class));
+        finish();
+    }
 }

@@ -85,4 +85,11 @@ public class BusinessLogin extends AppCompatActivity {
            }
        });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(BusinessLogin.this, Home.class));
+        finish();
+    }
 }

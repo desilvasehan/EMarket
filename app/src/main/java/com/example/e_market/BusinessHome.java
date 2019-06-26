@@ -59,6 +59,14 @@ public class BusinessHome extends AppCompatActivity {
         });
 
 
+        btn_cusstats = findViewById(R.id.btn_customerstats);
+        btn_cusstats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BusinessHome.this, CustomerStats.class));
+                finish();
+            }
+        });
 
 
     }
